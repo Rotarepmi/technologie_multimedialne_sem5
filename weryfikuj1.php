@@ -8,7 +8,7 @@
   <?php
   $user = $_POST['user']; // login z formularza
   $pass = $_POST['pass']; // hasło z formularza
-  $link = mysqli_connect(mysql92.mydevil.net, m1127_z1, zaq1@WSX, m1127_z1);
+  $link = mysqli_connect('mysql92.mydevil.net', 'm1127_z1', 'zaq1@WSX', 'm1127_z1');
   if (!$link) {
     echo "Error: " . mysqli_connect_errno() . " " . mysqli_connect_error();
   } // obsługa błędu połączenia z BD
