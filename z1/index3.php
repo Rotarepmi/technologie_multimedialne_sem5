@@ -11,6 +11,8 @@
     Hasło:<input type="password" name="pass" maxlength="20" size="20"><br>
     <input type="submit" value="Send" />
   </form>
+
+  <a href="rejestruj.php">Rejestracja</a>
 </BODY>
 
 </HTML>
