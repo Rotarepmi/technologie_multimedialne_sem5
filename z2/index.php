@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);  /* Ta linia musi być pierwsza */ ?>
+<?php declare(strict_types=1);  /* Ta linia musi być pierwsza */ require_once 'auth.php'; ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
