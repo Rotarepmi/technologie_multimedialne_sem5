@@ -9,7 +9,7 @@
   $user = htmlentities($_POST['user'], ENT_QUOTES, "UTF-8"); // rozbrojenie potencjalnej bomby w zmiennej $user
   $pass = htmlentities($_POST['pass'], ENT_QUOTES, "UTF-8"); // rozbrojenie potencjalnej bomby w zmiennej $pass
 
-  $link = mysqli_connect('mysql92.mydevil.net', 'm1127_z1', 'zaq1@WSX', 'm1127_z1');
+  $link = mysqli_connect('mysql92.mydevil.net', 'm1127_z', 'zaq1@WSX', 'm1127_z1');
   if (!$link) {
     echo "Błąd: " . mysqli_connect_errno() . " " . mysqli_connect_error();
   } // obsługa błędu połączenia z BD
