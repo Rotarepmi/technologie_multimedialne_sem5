@@ -11,7 +11,7 @@ if ($pass !== $pass_confirm) {
   exit('Hasła nie są takie same.');
 }
 
-$link = mysqli_connect('mysql92.mydevil.net', 'm1127_z1', 'zaq1@WSX', 'm1127_z1');
+$link = mysqli_connect(getenv('DB_HOST') ?: 'mysql92.mydevil.net', getenv('DB_USER') ?: 'm1127_z1', getenv('DB_PASS') ?: 'zaq1@WSX', 'm1127_z1');
 if (!$link) {
   exit('Nie udało się połączyć z bazą danych.');
 }
