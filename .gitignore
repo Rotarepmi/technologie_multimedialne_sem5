@@ -3,5 +3,9 @@
 # Pliki przesłane przez użytkowników dysku
 dysk/*
 !dysk/.htaccess
+songs/*
+!songs/.htaccess
+films/*
+!films/.htaccess
 avatars/*
 !avatars/.gitkeep
