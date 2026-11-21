@@ -1,0 +1,3 @@
+# Pliki video nie są dostępne bezpośrednio z sieci - wydaje je wyłącznie video/stream.php
+# po sprawdzeniu sesji i uprawnień (własny film / publiczna playlista / własna playlista).
+Require all denied
