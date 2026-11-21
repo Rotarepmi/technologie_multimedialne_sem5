@@ -1,0 +1,104 @@
+body {
+  background-color: #f0f0f0;
+}
+
+.sekcja1 {
+  height: auto;
+  width: auto;
+  text-align: left;
+  border-color: blue;
+  border-width: 1px;
+  margin-top: 70px;
+  margin-left: 5px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+}
+
+.page-footer {
+  height: 21px;
+  width: auto;
+  font-size: 11px;
+  color: blue;
+  border: solid;
+  border-width: 1px;
+  border-color: blue;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.sekcja1 {
+  padding-bottom: 40px; /* miejsce na stały footer */
+}
+
+.page-footer a {
+  color: inherit;
+}
+
+
+/* mySpotify */
+.song-table td:first-child {
+  min-width: 220px;
+}
+
+.song-player {
+  width: 100%;
+  max-width: 320px;
+  height: 36px;
+}
+
+.upload-form {
+  max-width: 720px;
+}
+
+.add-to-pl select {
+  max-width: 190px;
+}
+
+.lyrics {
+  white-space: pre-wrap;
+  font-family: inherit;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+/* Odtwarzacz playlisty */
+.player-card {
+  position: sticky;
+  top: 70px;
+}
+
+.player-card audio {
+  width: 100%;
+}
+
+.track-list .track {
+  cursor: pointer;
+}
+
+.track-list .track.active {
+  background-color: #d1e7dd;
+  font-weight: 600;
+}
+
+.track-list .track .track-no {
+  width: 2rem;
+  text-align: right;
+}
+
+.track-list .track.active .track-no {
+  color: #198754;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
