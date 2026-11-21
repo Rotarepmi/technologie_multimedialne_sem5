@@ -26,6 +26,7 @@ $home = $isAdmin ? 'admin.php' : 'index.php';
 				</li>
 				<?php if ($isAdmin): ?>
 					<li class="nav-item"><a href="staff.php" class="nav-link px-2 link-dark"><i class="fa fa-users"></i> Personel</a></li>
+					<li class="nav-item"><a href="goscie.php" class="nav-link px-2 link-dark"><i class="fa fa-globe"></i> Goście portalu</a></li>
 				<?php endif; ?>
 				<li class="nav-item"><a href="ustawienia.php" class="nav-link px-2 link-dark"><i class="fa fa-volume-up"></i> Alarm</a></li>
 				<li class="nav-item dropdown">

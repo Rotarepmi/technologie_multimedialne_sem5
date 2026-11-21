@@ -20,6 +20,21 @@ CREATE TABLE IF NOT EXISTS domeny (
   CONSTRAINT fk_domeny_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Wizyty gości portalu (z3) - zapis przez visit.js -> log_visit.php, podgląd w goscie.php (administrator)
+CREATE TABLE IF NOT EXISTS goscieportalu (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ipaddress VARCHAR(45) NOT NULL,
+  datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  browser TEXT NULL,
+  screen_res VARCHAR(20) NULL,
+  window_res VARCHAR(20) NULL,
+  colors TINYINT UNSIGNED NULL,
+  cookies BOOLEAN NULL,
+  java BOOLEAN NULL,
+  language VARCHAR(35) NULL,
+  INDEX idx_ip (ipaddress)
+);
+
 -- 14g: konto administratora + przykładowi pracownicy (15e)
 INSERT IGNORE INTO users (username, password, worker) VALUES
   ('admin', 'admin', FALSE),
