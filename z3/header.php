@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);  /* Ta linia musi być pierwsza */
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+	exit(); // navbar tylko po zalogowaniu
+}
+$username = htmlspecialchars($_SESSION['username'] ?? '');
+$avatar = $_SESSION['avatar'] ?? null;
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<header class="p-2 border-bottom bg-white fixed-top shadow-sm">
+	<div class="container-fluid">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 me-lg-3 link-dark text-decoration-none">
+				<span class="fs-5 fw-semibold">Mandra</span>
+			</a>
+
+			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link px-2 link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-globe"></i> Goście portalu</a>
+					<ul class="dropdown-menu text-small shadow">
+						<li><a class="dropdown-item" href="goscie.php"><i class="fa fa-table"></i> Lista wizyt - geolokalizacja, przeglądarka, ekran (12-16)</a></li>
+						<!-- <li><a class="dropdown-item" href="goscie_ip.php"><i class="fa fa-sort-amount-desc"></i> Wizyty wg IP - liczba wejść malejąco (17b-c)</a></li> -->
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link px-2 link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Serwer</a>
+					<ul class="dropdown-menu text-small shadow">
+						<li><a class="dropdown-item" href="index1.php"><img src="media/menu_icons/info.svg" height="18" alt=""> Netstat - porty i usługi (4)</a></li>
+						<li><a class="dropdown-item" href="index2.php"><img src="media/menu_icons/help.svg" height="18" alt=""> PHP Info (5)</a></li>
+						<li><a class="dropdown-item" href="index3.php"><img src="media/menu_icons/help.svg" height="18" alt=""> Whoami - użytkownik hostingu (6)</a></li>
+						<li><a class="dropdown-item" href="index4.php"><img src="media/menu_icons/help.svg" height="18" alt=""> Top - obciążenie, RAM, procesy (7)</a></li>
+						<li><a class="dropdown-item" href="index5.php"><img src="media/menu_icons/help.svg" height="18" alt=""> ls -al - pliki z prawami (8)</a></li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link px-2 link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">DNS i geolokalizacja</a>
+					<ul class="dropdown-menu text-small shadow">
+						<li><a class="dropdown-item" href="index6.php"><img src="media/menu_icons/info.svg" height="18" alt=""> dns_get_record() - rekordy DNS (9)</a></li>
+						<li><a class="dropdown-item" href="index7.php"><img src="media/menu_icons/info.svg" height="18" alt=""> gethostbyname/addr - IP i nazwy hostów (9)</a></li>
+						<li><a class="dropdown-item" href="index8.php"><img src="media/menu_icons/info.svg" height="18" alt=""> Geolokalizacja IP - ipinfo.io (11)</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<div class="dropdown text-end">
+				<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+					<?php if ($avatar): ?>
+						<img src="<?= htmlspecialchars($avatar) ?>" alt="<?= $username ?>" width="32" height="32" class="rounded-circle object-fit-cover">
+					<?php else: ?>
+						<i class="fa fa-user-circle fa-2x text-secondary"></i>
+					<?php endif; ?>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="dropdownUser">
+					<li>
+						<h6 class="dropdown-header">Zalogowany jako <strong><?= $username ?></strong></h6>
+					</li>
+					<li>
+						<hr class="dropdown-divider">
+					</li>
+					<li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i> Wyloguj</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
