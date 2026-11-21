@@ -26,6 +26,7 @@ services:
       - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
       - ./z3/z3.sql:/docker-entrypoint-initdb.d/sql/z3.sql:ro
       - ./z4/z4.sql:/docker-entrypoint-initdb.d/sql/z4.sql:ro
+      - ./z5/z5.sql:/docker-entrypoint-initdb.d/sql/z5.sql:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
       interval: 5s

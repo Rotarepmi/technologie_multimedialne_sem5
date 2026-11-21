@@ -1,0 +1,5 @@
+# Pliki przesłane przez użytkowników dysku
+dysk/*
+!dysk/.htaccess
+avatars/*
+!avatars/.gitkeep
