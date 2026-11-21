@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/drive.php';
 
 $user = trim($_POST['user'] ?? '');
 $pass = $_POST['pass'] ?? '';
@@ -32,16 +32,17 @@ if ($file && $file['error'] !== UPLOAD_ERR_NO_FILE) {
   if (!$info || !isset($types[$info['mime']]) || $file['size'] > 2 * 1024 * 1024) {
     fail('Avatar musi być obrazkiem PNG/JPG/GIF/WEBP do 2 MB.');
   }
-  if (!is_dir('avatars')) {
-    mkdir('avatars', 0755);
+  if (!is_dir(AVATARS_DIR)) {
+    mkdir(AVATARS_DIR, 0755);
   }
+  // W bazie ścieżka względna wobec katalogu z5 (np. avatars/abc.png)
   $avatar = 'avatars/' . bin2hex(random_bytes(8)) . '.' . $types[$info['mime']];
-  if (!move_uploaded_file($file['tmp_name'], $avatar)) {
+  if (!move_uploaded_file($file['tmp_name'], APP_ROOT . '/' . $avatar)) {
     fail('Nie udało się zapisać avatara.');
   }
 }
 
-require_once 'db.php';
+require_once __DIR__ . '/../lib/db.php';
 $link = db_connect();
 $stmt = mysqli_prepare($link, 'INSERT INTO users (username, password, avatar) VALUES (?, ?, ?)');
 mysqli_stmt_bind_param($stmt, 'sss', $user, $pass, $avatar);
@@ -58,7 +59,7 @@ mysqli_close($link);
 
 if (!$homeOk) {
   if ($avatar) {
-    unlink($avatar);
+    unlink(APP_ROOT . '/' . $avatar);
   }
   fail($registered
     ? 'Nie udało się utworzyć katalogu macierzystego na serwerze.'

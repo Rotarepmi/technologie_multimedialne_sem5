@@ -11,7 +11,7 @@
 		// navigator.javaEnabled() we współczesnych przeglądarkach zawsze zwraca false (brak wtyczki NPAPI)
 		data.append('java', typeof navigator.javaEnabled === 'function' && navigator.javaEnabled() ? 1 : 0);
 		data.append('language', navigator.language || navigator.userLanguage || '');
-		fetch('log_visit.php', { method: 'POST', body: data, credentials: 'same-origin' })
+		fetch('../visits/log_visit.php', { method: 'POST', body: data, credentials: 'same-origin' })
 			.catch(function () {});
 	}
 	if (document.readyState === 'loading') {

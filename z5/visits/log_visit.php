@@ -35,7 +35,7 @@ $cookies = isset($_POST['cookies']) ? (int)($_POST['cookies'] === '1') : null;
 $java = isset($_POST['java']) ? (int)($_POST['java'] === '1') : null;
 $language = field('language', 35);
 
-require_once 'db.php';
+require_once __DIR__ . '/../lib/db.php';
 $link = db_connect();
 $stmt = mysqli_prepare($link, 'INSERT INTO goscieportalu (ipaddress, browser, screen_res, window_res, colors, cookies, java, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 mysqli_stmt_bind_param($stmt, 'ssssiiis', $ip, $browser, $screen, $window, $colors, $cookies, $java, $language);

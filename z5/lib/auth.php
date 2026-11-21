@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start(); // zapewnia dostęp do zmiennych sesyjnych w danym pliku
 if (!isset($_SESSION['loggedin'], $_SESSION['home'])) {
-  header('Location: login.php');
+  header('Location: ../auth/login.php');
   exit();
 }
 
@@ -14,7 +14,7 @@ function is_admin(): bool
 function require_admin(): void
 {
   if (!is_admin()) {
-    header('Location: index.php');
+    header('Location: ../drive/index.php');
     exit();
   }
 }
@@ -46,6 +46,6 @@ function require_post_csrf(): void
 {
   if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !hash_equals(csrf_token(), (string)($_POST['csrf'] ?? ''))) {
     flash('danger', 'Nieprawidłowe żądanie - odśwież stronę i spróbuj ponownie.');
-    redirect('index.php');
+    redirect('../drive/index.php');
   }
 }

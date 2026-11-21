@@ -1,9 +1,9 @@
 <?php
 // 6i-j: formularz wyboru pliku (wg select.php z instrukcji) - plik trafia do bieżącego katalogu
 declare(strict_types=1);
-require_once 'auth.php';
-require_once 'drive.php';
-require_once 'layout.php';
+require_once __DIR__ . '/../lib/auth.php';
+require_once __DIR__ . '/../lib/drive.php';
+require_once __DIR__ . '/../layout/layout.php';
 
 $dir = current_dir($_GET);
 $limit = upload_limit();

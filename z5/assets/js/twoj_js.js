@@ -2,7 +2,7 @@ function myLoadHeader()
 {
 	$(document).ready(function()
 	{
-		$('#myHeader').load("header.php");
+		$('#myHeader').load("../layout/header.php");
 	});
 }
 

@@ -1,10 +1,10 @@
 <?php
 // 6b: udane i błędne próby logowania (oraz wizyty gości portalu z z3) z tabeli goscieportalu - widok administratora
 declare(strict_types=1);
-require_once 'auth.php';
+require_once __DIR__ . '/../lib/auth.php';
 require_admin();
-require_once 'db.php';
-require_once 'layout.php';
+require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../layout/layout.php';
 
 $link = db_connect();
 $rows = mysqli_fetch_all(mysqli_query($link,

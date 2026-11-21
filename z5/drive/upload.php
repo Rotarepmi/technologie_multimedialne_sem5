@@ -2,8 +2,8 @@
 // 6i-j: odbiór przesłanych plików (wg upload.php z instrukcji). $target_dir = katalog macierzysty
 // zalogowanego użytkownika (lub jego podkatalog). Bez ograniczeń typu i rozmiaru (poza limitem PHP).
 declare(strict_types=1);
-require_once 'auth.php';
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/auth.php';
+require_once __DIR__ . '/../lib/drive.php';
 
 // Plik większy niż post_max_size: PHP odrzuca całe żądanie i $_POST/$_FILES są puste
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST) && (int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) {
@@ -14,31 +14,6 @@ require_post_csrf();
 
 $dir = current_dir($_POST);
 $target_dir = abs_path($dir);
-
-// Nazwa z przeglądarki: tylko część po ostatnim ukośniku (basename), bez znaków sterujących i kropki na początku
-function safe_filename(string $name): string
-{
-  $name = basename(str_replace('\\', '/', $name));
-  $name = preg_replace('/[\x00-\x1F\x7F]/', '', $name);
-  $name = ltrim($name, '.');
-  if (strlen($name) > 200) {
-    $ext = pathinfo($name, PATHINFO_EXTENSION);
-    $name = mb_strcut($name, 0, 190) . ($ext !== '' ? '.' . mb_strcut($ext, 0, 9) : '');
-  }
-  return $name !== '' ? $name : 'plik';
-}
-
-// Istniejący plik nie jest nadpisywany - "nazwa (1).ext", "nazwa (2).ext", ...
-function unique_target(string $dir, string $name): string
-{
-  $base = pathinfo($name, PATHINFO_FILENAME);
-  $ext = pathinfo($name, PATHINFO_EXTENSION);
-  $candidate = $name;
-  for ($i = 1; file_exists($dir . '/' . $candidate); $i++) {
-    $candidate = $base . " ({$i})" . ($ext !== '' ? '.' . $ext : '');
-  }
-  return $candidate;
-}
 
 $errors = [
   UPLOAD_ERR_INI_SIZE => 'plik przekracza limit serwera (' . human_size(upload_limit()) . ')',

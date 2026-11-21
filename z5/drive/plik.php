@@ -4,8 +4,8 @@
 // wyłącznie przez ten skrypt - tylko dla zalogowanego właściciela. Obsługa nagłówka Range
 // pozwala przewijać filmy i muzykę (Safari bez niej w ogóle nie odtworzy pliku mp4).
 declare(strict_types=1);
-require_once 'auth.php';
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/auth.php';
+require_once __DIR__ . '/../lib/drive.php';
 
 $rel = clean_rel((string)($_GET['f'] ?? ''));
 $path = $rel !== null && $rel !== '' ? abs_path($rel) : '';

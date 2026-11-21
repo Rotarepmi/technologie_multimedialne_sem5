@@ -1,8 +1,8 @@
 <?php
 // 6f: tworzenie podkatalogu (mkdir) wewnątrz katalogu macierzystego
 declare(strict_types=1);
-require_once 'auth.php';
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/auth.php';
+require_once __DIR__ . '/../lib/drive.php';
 require_post_csrf();
 
 $dir = current_dir($_POST);

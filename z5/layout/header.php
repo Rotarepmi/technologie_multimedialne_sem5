@@ -12,19 +12,19 @@ $isAdmin = !empty($_SESSION['is_admin']);
 <header class="p-2 border-bottom bg-white fixed-top shadow-sm">
 	<div class="container-fluid">
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			<a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 me-lg-3 link-dark text-decoration-none">
+			<a href="../drive/index.php" class="d-flex align-items-center mb-2 mb-lg-0 me-lg-3 link-dark text-decoration-none">
 				<i class="bi bi-cloud-fill text-primary fs-4 me-2"></i>
 				<span class="fs-5 fw-semibold">MyCloud</span>
 			</a>
 
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				<li class="nav-item"><a href="index.php" class="nav-link px-2 link-dark"><i class="bi bi-hdd-network"></i> Mój dysk</a></li>
+				<li class="nav-item"><a href="../drive/index.php" class="nav-link px-2 link-dark"><i class="bi bi-hdd-network"></i> Mój dysk</a></li>
 				<?php if ($isAdmin): ?>
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link px-2 link-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-shield-lock"></i> Administrator</a>
 						<ul class="dropdown-menu text-small shadow">
-							<li><a class="dropdown-item" href="logowania.php"><i class="bi bi-list-check"></i> Logowania i wizyty (goscieportalu)</a></li>
-							<li><a class="dropdown-item" href="break_ins.php"><i class="bi bi-exclamation-octagon"></i> Próby włamań (break_ins)</a></li>
+							<li><a class="dropdown-item" href="../admin/logowania.php"><i class="bi bi-list-check"></i> Logowania i wizyty (goscieportalu)</a></li>
+							<li><a class="dropdown-item" href="../admin/break_ins.php"><i class="bi bi-exclamation-octagon"></i> Próby włamań (break_ins)</a></li>
 						</ul>
 					</li>
 				<?php endif; ?>
@@ -33,7 +33,7 @@ $isAdmin = !empty($_SESSION['is_admin']);
 			<div class="dropdown text-end">
 				<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
 					<?php if ($avatar): ?>
-						<img src="<?= htmlspecialchars($avatar) ?>" alt="<?= $username ?>" width="32" height="32" class="rounded-circle object-fit-cover">
+						<img src="<?= htmlspecialchars("../" . $avatar) ?>" alt="<?= $username ?>" width="32" height="32" class="rounded-circle object-fit-cover">
 					<?php else: ?>
 						<i class="bi bi-person-circle fs-3 text-secondary"></i>
 					<?php endif; ?>
@@ -45,7 +45,7 @@ $isAdmin = !empty($_SESSION['is_admin']);
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="logout.php"><i class="bi bi-box-arrow-right"></i> Wyloguj</a></li>
+					<li><a class="dropdown-item" href="../auth/logout.php"><i class="bi bi-box-arrow-right"></i> Wyloguj</a></li>
 				</ul>
 			</div>
 		</div>

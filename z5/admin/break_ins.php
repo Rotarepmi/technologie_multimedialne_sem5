@@ -2,10 +2,10 @@
 // 6b-iv: zawartość tabeli break_ins (3 kolejne błędne logowania -> blokada na 1 min) - widok administratora.
 // Zestawienie wg IP ułatwia tworzenie czarnych list adresów.
 declare(strict_types=1);
-require_once 'auth.php';
+require_once __DIR__ . '/../lib/auth.php';
 require_admin();
-require_once 'db.php';
-require_once 'layout.php';
+require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../layout/layout.php';
 
 $link = db_connect();
 $rows = mysqli_fetch_all(mysqli_query($link, 'SELECT id, datetime, username, ipaddress FROM break_ins ORDER BY id DESC'), MYSQLI_ASSOC);

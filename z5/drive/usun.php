@@ -1,8 +1,8 @@
 <?php
 // 6g: usuwanie pliku (unlink) lub podkatalogu (najpierw jego zawartość, potem rmdir)
 declare(strict_types=1);
-require_once 'auth.php';
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/auth.php';
+require_once __DIR__ . '/../lib/drive.php';
 require_post_csrf();
 
 $rel = clean_rel((string)($_POST['f'] ?? ''));

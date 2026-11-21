@@ -4,8 +4,8 @@
 // a przy następnym poprawnym logowaniu użytkownik widzi czerwone ostrzeżenie z datą i IP ostatniej błędnej próby.
 declare(strict_types=1);
 session_start();
-require_once 'db.php';
-require_once 'drive.php';
+require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../lib/drive.php';
 
 const MAX_FAILED_LOGINS = 3;
 const BLOCK_SECONDS = 60;
@@ -21,25 +21,6 @@ if ($user === '' || $pass === '') {
 }
 
 $link = db_connect();
-
-function query_one(mysqli $link, string $sql, string $types, mixed ...$params): ?array
-{
-  $stmt = mysqli_prepare($link, $sql);
-  mysqli_stmt_bind_param($stmt, $types, ...$params);
-  mysqli_stmt_execute($stmt);
-  $result = mysqli_stmt_get_result($stmt);
-  $row = $result ? mysqli_fetch_assoc($result) : null;
-  mysqli_stmt_close($stmt);
-  return $row ?: null;
-}
-
-function execute(mysqli $link, string $sql, string $types, mixed ...$params): void
-{
-  $stmt = mysqli_prepare($link, $sql);
-  mysqli_stmt_bind_param($stmt, $types, ...$params);
-  mysqli_stmt_execute($stmt);
-  mysqli_stmt_close($stmt);
-}
 
 function log_login(mysqli $link, string $event, string $username, string $ip, string $browser): void
 {
@@ -110,5 +91,5 @@ $_SESSION['home'] = home_path($rekord['username']);    // 6c-ii: ścieżka katal
 if ($warning) {
   $_SESSION['security_warning'] = $warning;
 }
-header('Location: index.php');
+header('Location: ../drive/index.php');
 exit();
